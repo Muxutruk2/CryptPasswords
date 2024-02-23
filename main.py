@@ -5,7 +5,6 @@ from tkinter import ttk
 cipher = generate_key_from_password("123")
 result_label = None  # Declare result_label globally
 
-
 def configure_styles():
     style = ttk.Style()
     # Configure a style for buttons
