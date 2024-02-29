@@ -10,13 +10,17 @@ def encriptar(texto, cipher):
 def escribir(app, correo, contraseña, cipher):
     # Concatenate the data into a single string
     texto = f"{app},{correo},{contraseña}"
+    print(f"Escribiendo : {texto}")
 
     # Encrypt the concatenated string
     textoEncriptado = encriptar(texto, cipher)
-
+    print(f"Encriptado: {textoEncriptado}")
     # Append the encrypted string to the file
-    with open("passwords.txt", "ab") as file:
-        file.write(textoEncriptado + b'\n')  # Add a newline between entries
+    with open("passwords.txt", "wb") as file:
+        file.write(textoEncriptado + b'\n')
+        print(f"Se ha escribió correctamente")
+    with open("passwords.txt", "rb") as file:
+        print(file.read())
 
 
 def desencriptar(texto_encriptado, cipher):
