@@ -67,24 +67,29 @@ def establecerLlave():
 
 def refresh_result_label():
     global result_label, cipher
-    result_label.delete("1.0",tk.END)
+
     decrypted_entries = leer(cipher)
-    if decrypted_entries is None:
+
+    if not decrypted_entries:
         return None
-    result_label.insert("1.0",decrypted_entries)
+    
+    result_label.config(text=decrypted_entries)
+
+    print(decrypted_entries)
 
 def añadirContraseña():
-    global app_entry_left, email_entry_left, result_label, cipher, password_entry_right
+    global app_entry_left, email_entry_left, result_label, cipher, password_entry_left
     app = app_entry_left.get()
     correo = email_entry_left.get()
-    contraseña = password_entry_right.get()
+    contraseña = password_entry_left.get()
     if "" in [app,correo,contraseña]: return
     escribir(app, correo, contraseña, cipher)
+    print(app, correo, contraseña, cipher)
     refresh_result_label()
 
 
 def main():
-    global app_entry_left, email_entry_left, result_label, cipher, password_entry_right
+    global app_entry_left, email_entry_left, result_label, cipher, password_entry_right, password_entry_left
 
     root = tk.Tk()
     root.title("Administrador de contraseñas encriptadas")
@@ -189,7 +194,7 @@ def main():
     )
 
     # Text widget on the right side
-    result_label = tk.Text(right_frame,height=20, width=50)
+    result_label = tk.Label(right_frame,height=20, width=50)
     result_label.grid(
         row=3,
         column=0,
