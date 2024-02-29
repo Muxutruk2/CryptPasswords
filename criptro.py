@@ -5,6 +5,8 @@ from genKey import *
 def encriptar(texto, cipher):
     return cipher.encrypt(texto.encode())
 
+
+
 def escribir(app, correo, contraseña, cipher):
     # Concatenate the data into a single string
     texto = f"{app},{correo},{contraseña}"
@@ -23,7 +25,6 @@ def desencriptar(texto_encriptado, cipher):
         texto_desencriptado = cipher.decrypt(texto_encriptado).decode()
         return texto_desencriptado
     except Exception as e:
-        print(f"Error decrypting: {e}")
         return None
 
 def leer(cipher):
@@ -41,6 +42,9 @@ def leer(cipher):
             # Split the decrypted string into individual fields
             app, correo, contraseña = texto_desencriptado.split(",")
             decrypted_entries.append(f"App: {app}, Correo: {correo}, Contraseña: {contraseña}")
+
+        else:
+            return None
 
     return "\n".join(decrypted_entries)
     
