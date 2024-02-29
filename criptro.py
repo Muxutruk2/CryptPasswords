@@ -15,7 +15,7 @@ def escribir(app, correo, contraseña, cipher):
     textoEncriptado = encriptar(texto, cipher)
 
     # Append the encrypted string to the file
-    with open("contraseñas.txt", "ab") as file:
+    with open("passwords.txt", "ab") as file:
         file.write(textoEncriptado + b'\n')  # Add a newline between entries
 
 
@@ -29,7 +29,7 @@ def desencriptar(texto_encriptado, cipher):
 
 def leer(cipher):
     # Read all lines from the encrypted file
-    with open("contraseñas.txt", "rb") as file:
+    with open("passwords.txt", "rb") as file:
         lines = file.readlines()
 
     decrypted_entries = []
