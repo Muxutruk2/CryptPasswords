@@ -2,7 +2,7 @@ from criptro import *
 import tkinter as tk
 from tkinter import ttk
 
-cipher = generate_key_from_password("123")
+cipher = generate_key_from_password("1")
 result_label = None  # Declare result_label globally
 
 def configure_styles():
