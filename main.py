@@ -17,59 +17,7 @@ except:
     import sv_ttk
     from PIL import ImageTk, Image
 cipher = generate_key_from_password("1")
-result_label = None  # Declare result_label globally
-
-def configure_styles():
-    style = ttk.Style()
-    # Configure a style for buttons
-    style.configure(
-        "TButton",
-        font=("Helvetica", 12),
-        padding=(10, 5),
-        background="#4CAF50",
-        foreground="#000000",
-    )
-
-    # Configure a style for labels
-    style.configure(
-        "TLabel",
-        font=("Helvetica", 12),
-        background="#feffe6",
-        foreground="#000000",
-
-    )
-
-    # Configure a style for entries
-    style.configure(
-        "TEntry",
-        font=("Helvetica", 12),
-        background="#feffe6",
-        foreground="#000000",
-        
-    )
-
-    # Configure a style for frames
-    style.configure(
-        "TFrame",
-        font=("Helvetica", 12),
-        background="#feffe6",
-        foreground="#000000",
-    )
-
-    style.configure(
-        "TText",
-        font=("Helvetica", 12),
-        background="#feffe6",
-        foreground="#000000",
-    )
-
-    style.configure(
-        "TFrame",
-        font=("Helvetica", 12),
-        background="#feffe6",
-        foreground="#000000",
-        
-    )
+result_label = None
 
 def establecerLlave():
     global cipher
@@ -106,15 +54,13 @@ def main():
     global app_entry_left, email_entry_left, result_label, cipher, password_entry_right, password_entry_left
 
     root = tk.Tk()
+    
     root.title("Administrador de contraseñas encriptadas")
     root.configure(background="#000000")
-    configure_styles()
 
     # Left side widgets
-    left_frame = ttk.Frame(root,)
+    left_frame = ttk.Frame(root)
     left_frame.grid(row=0, column=0, padx=100, pady=100, )
-
-    ImageTk.PhotoImage(Image.open())
 
     ttk.Label(left_frame, text="Añadir contraseña").grid(
         row=0,
