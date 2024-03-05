@@ -1,7 +1,6 @@
 import os
 try:
     import base64
-    from cryptography.hazmat.backends import default_backend
     from cryptography.hazmat.primitives import hashes
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     from cryptography.fernet import Fernet
@@ -14,7 +13,7 @@ def generate_key_from_password(password):
     password_bytes = password.encode()
 
     # Generate a salt (random value)
-    salt = b'salt_value_here'
+    salt = b'0972376093247698234najdiajfgjoijqj40934i'
 
     # Create a PBKDF2HMAC key derivation function
     kdf = PBKDF2HMAC(
