@@ -1,19 +1,3 @@
-# CryptPasswords
-CryptPasswords is a python app that saves passwords using encryption.
+![English](https://github.com/Muxutruk2/CryptPasswords/blob/main/README-en.md)
 
-## Instalation
-
-Install Python [Here](https://www.python.org/downloads/). Check "ADD TO PATH"
-
-Execute these commands in CMD
-
-```
-pip install tkinter
-pip install Pillow
-```
-
-Then, execute "main.py", you can create a shortcut
-
-## Usage
-
-![Usage guide image](https://github.com/Muxutruk2/CryptPasswords/blob/main/ReadmeImages/image.png)
+![Español](https://github.com/Muxutruk2/CryptPasswords/blob/main/README-es.md)
