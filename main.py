@@ -1,4 +1,3 @@
-from cgitb import text
 import sys
 
 sys.dont_write_bytecode = True
