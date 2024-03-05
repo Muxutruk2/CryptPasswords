@@ -3,11 +3,14 @@ from cryptography.fernet import Fernet
 from genKey import *
 
 
-def encrypt(text, cipher):
-    return cipher.encrypt(text.encode())
+def encrypt(text: str, cipher: Fernet) -> str:
+    """Inputs text as string and Returns encripted text as a string using Fernet cipher"""
+    return str(cipher.encrypt(text.encode()))
 
 
-def write(app, email, password, cipher):
+def write(app:str, email:str, password: str, cipher: Fernet) -> None:
+    """Saves the encrypted password in th passwords.txt file"""
+
     # Concatenate the data into a single string
     text = f"{app},{email},{password}"
     print(f"Writing: {text}")
@@ -25,7 +28,7 @@ def write(app, email, password, cipher):
         print(file.read())
 
 
-def decrypt(encrypted_text, cipher):
+def decrypt(encrypted_text, cipher:Fernet.Key):
     try:
         # Decrypt the encrypted string
         decrypted_text = cipher.decrypt(encrypted_text).decode()
@@ -34,8 +37,10 @@ def decrypt(encrypted_text, cipher):
         return None
 
 
-def read(cipher):
-    # Read all lines from the encrypted file
+def read(cipher:Fernet.Key) -> str|None:
+    """
+    Inputs a Fernet.Key as cipher and outputs str if the cipher is correct, None otherwise
+    """
     with open("passwords.txt", "rb") as file:
         lines = file.readlines()
 

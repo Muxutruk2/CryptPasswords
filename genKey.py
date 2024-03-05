@@ -8,7 +8,8 @@ try:
 except:
     os.system("pip install cryptography")
 
-def generate_key_from_password(password):
+def generate_key_from_password(password:str) -> Fernet:
+    """Generates a Fernet key from a password"""
     # Convert the password to bytes
     password_bytes = password.encode()
 
