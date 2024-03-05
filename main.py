@@ -17,7 +17,6 @@ def setKey():
     global password_entry_right
     password = password_entry_right.get()
     cipher = generate_key_from_password(password)
-    print("Key set: ", password)
 
 
 def refresh_result_label():
@@ -30,8 +29,6 @@ def refresh_result_label():
 
     result_label.config(text=decrypted_entries)
 
-    print(decrypted_entries)
-
 
 def addPassword():
     global app_entry_left, email_entry_left, result_label, cipher, password_entry_left
@@ -41,7 +38,6 @@ def addPassword():
     if "" in [app, email, password]:
         return
     write(app, email, password, cipher)
-    print(app, email, password, cipher)
     refresh_result_label()
 
 def changeLanguage():
