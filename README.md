@@ -8,7 +8,6 @@ Install Python [Here](https://www.python.org/downloads/). Check "ADD TO PATH"
 Execute these commands in CMD
 
 ```
-pip install criptro
 pip install tkinter
 pip install sv_ttk
 pip install Pillow
