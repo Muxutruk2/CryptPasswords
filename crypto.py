@@ -2,33 +2,56 @@ import os
 from cryptography.fernet import Fernet
 from genKey import *
 
-
 def encrypt(text: str, cipher: Fernet) -> str:
-    """Inputs text as string and Returns encripted text as a string using Fernet cipher"""
+    """
+    Encrypts the input text using the provided Fernet cipher.
+
+    Parameters:
+    - text (str): The text to be encrypted.
+    - cipher (Fernet): The Fernet cipher object used for encryption.
+
+    Returns:
+    str: The encrypted text as a string.
+    """
+
     return str(cipher.encrypt(text.encode()))
 
+def write(app: str, email: str, password: str, cipher: Fernet) -> None:
+    """
+    Saves the encrypted password in the passwords.txt file.
 
-def write(app:str, email:str, password: str, cipher: Fernet) -> None:
-    """Saves the encrypted password in th passwords.txt file"""
+    Parameters:
+    - app (str): The application name.
+    - email (str): The email associated with the password.
+    - password (str): The password to be encrypted and stored.
+    - cipher (Fernet): The Fernet cipher object used for encryption.
+
+    Returns:
+    None
+    """
 
     # Concatenate the data into a single string
     text = f"{app},{email},{password}"
-    print(f"Writing: {text}")
 
     # Encrypt the concatenated string
     encrypted_text = encrypt(text, cipher)
-    print(f"Encrypted: {encrypted_text}")
 
     # Append the encrypted string to the file
-    with open("passwords.txt", "wb") as file:
-        file.write(encrypted_text + b"\n")
-        print("Successfully wrote to the file")
+    with open("passwords.txt", "ab") as file:
+        file.write(encrypted_text.encode() + b"\n")
 
-    with open("passwords.txt", "rb") as file:
-        print(file.read())
+def decrypt(encrypted_text: bytes, cipher: Fernet) -> str|None:
+    """
+    Decrypts the input encrypted text using the provided Fernet cipher.
 
+    Parameters:
+    - encrypted_text (bytes): The encrypted text to be decrypted.
+    - cipher (Fernet): The Fernet cipher object used for decryption.
 
-def decrypt(encrypted_text, cipher:Fernet.Key):
+    Returns:
+    str|None: The decrypted text as a string if successful, None otherwise.
+    """
+
     try:
         # Decrypt the encrypted string
         decrypted_text = cipher.decrypt(encrypted_text).decode()
@@ -36,11 +59,17 @@ def decrypt(encrypted_text, cipher:Fernet.Key):
     except Exception as e:
         return None
 
+def read(cipher: Fernet) -> str|None:
+    """
+    Reads and decrypts the contents of the passwords.txt file.
 
-def read(cipher:Fernet.Key) -> str|None:
+    Parameters:
+    - cipher (Fernet): The Fernet cipher object used for decryption.
+
+    Returns:
+    str|None: The decrypted entries as a formatted string if successful, None otherwise.
     """
-    Inputs a Fernet.Key as cipher and outputs str if the cipher is correct, None otherwise
-    """
+
     with open("passwords.txt", "rb") as file:
         lines = file.readlines()
 
