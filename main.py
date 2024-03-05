@@ -2,24 +2,12 @@ import sys
 
 sys.dont_write_bytecode = True
 
-try:
-    from criptro import *
-    import tkinter as tk
-    from tkinter import ttk
-    import sv_ttk
-    from PIL import ImageTk, Image
-except:
-    import subprocess
-    subprocess.call("pip install criptro")
-    subprocess.call("pip install tkinter")
-    subprocess.call("pip install sv_ttk")
-    subprocess.call("pip install Pillow")
+from criptro import *
+import tkinter as tk
+from tkinter import ttk
+import sv_ttk
+from PIL import ImageTk, Image
 
-    from criptro import *
-    import tkinter as tk
-    from tkinter import ttk
-    import sv_ttk
-    from PIL import ImageTk, Image
 cipher = generate_key_from_password("1")
 result_label = None
 
