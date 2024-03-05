@@ -3,6 +3,7 @@ CryptPasswords is a python app that saves passwords using encryption.
 
 ## Instalation
 
+
 Install Python [Here](https://www.python.org/downloads/). Check "ADD TO PATH"
 
 Execute these commands in CMD
