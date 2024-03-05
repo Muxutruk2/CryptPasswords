@@ -12,6 +12,7 @@ Execute these commands in CMD
 ```
 pip install cryptography
 pip install Pillow
+pip install sv_ttk
 ```
 
 Then, execute "main.py", you can create a shortcut
