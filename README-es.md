@@ -7,9 +7,10 @@ Ve a la pestaña "Code" aquí y selecciona "Download Zip". Descomprime el archiv
 
 Instala Python [aquí](https://www.python.org/downloads/). Marca la casilla "ADD TO PATH" durante la instalación.
 
-Ejecuta este comando en CMD
+Ejecuta estos comandos en CMD
 
 ```
+pip install cryptography
 pip install Pillow
 ```
 

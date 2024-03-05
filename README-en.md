@@ -7,9 +7,10 @@ Go to the "Code" tab [here](https://github.com/Muxutruk2/CryptPasswords/) and se
 
 Install Python [Here](https://www.python.org/downloads/). Check "ADD TO PATH"
 
-Execute this command in CMD
+Execute these commands in CMD
 
 ```
+pip install cryptography
 pip install Pillow
 ```
 
