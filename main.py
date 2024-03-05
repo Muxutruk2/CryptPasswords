@@ -1,3 +1,4 @@
+from cgitb import text
 import sys
 
 sys.dont_write_bytecode = True
@@ -43,9 +44,20 @@ def addPassword():
     print(app, email, password, cipher)
     refresh_result_label()
 
+def changeLanguage():
+    global add_password_label_left, password_label_left, app_label_left, email_label_left, accept_button_left, language_button_left, password_label_right, accept_button_right, refresh_button_right
+    add_password_label_left.configure(text="Añadir contraseña")
+    password_label_left.configure(text="Contraseña: ")
+    app_label_left.configure(text="Aplicación: ")
+    email_label_left.configure(text="Email/Nombre de usuario: ")
+    language_button_left.configure(text="")
+    password_label_right.configure(text="Llave de encriptacion")
+    accept_button_right.configure(text="Establecer Llave")
+    refresh_button_right.configure(text="Refrescar")
 
 def main():
     global app_entry_left, email_entry_left, result_label, cipher, password_entry_right, password_entry_left
+    global add_password_label_left, password_label_left, app_label_left, email_label_left, accept_button_left, language_button_left, password_label_right, accept_button_right, refresh_button_right
 
     root = tk.Tk()
 
@@ -61,7 +73,8 @@ def main():
         pady=100,
     )
 
-    ttk.Label(left_frame, text="Add Password").grid(
+    add_password_label_left = ttk.Label(left_frame, text="Add Password")
+    add_password_label_left.grid(
         row=0,
         column=0,
         columnspan=2,
@@ -125,6 +138,14 @@ def main():
         padx=20,
         pady=20,
     )
+
+    language_button_left = ttk.Button(left_frame, text="Español", command=changeLanguage)
+    language_button_left.grid(
+        row=5,
+        column=0,
+        columnspan=2,
+        padx=20,
+        pady=20)
 
     # Right side widgets
     right_frame = ttk.Frame(root)
