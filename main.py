@@ -1,7 +1,21 @@
-from criptro import *
-import tkinter as tk
-from tkinter import ttk
+try:
+    from criptro import *
+    import tkinter as tk
+    from tkinter import ttk
+    import sv_ttk
+    from PIL import ImageTk, Image
+except:
+    import os
+    os.system("pip install criptro")
+    os.system("pip install tkinter")
+    os.system("pip install sv_ttk")
+    os.system("pip install PIL")
 
+    from criptro import *
+    import tkinter as tk
+    from tkinter import ttk
+    import sv_ttk
+    from PIL import ImageTk, Image
 cipher = generate_key_from_password("1")
 result_label = None  # Declare result_label globally
 
@@ -93,12 +107,14 @@ def main():
 
     root = tk.Tk()
     root.title("Administrador de contraseñas encriptadas")
-    root.configure(background="#F5ff00")
+    root.configure(background="#000000")
     configure_styles()
 
     # Left side widgets
     left_frame = ttk.Frame(root,)
-    left_frame.grid(row=0, column=0, padx=100, pady=100)
+    left_frame.grid(row=0, column=0, padx=100, pady=100, )
+
+    ImageTk.PhotoImage(Image.open())
 
     ttk.Label(left_frame, text="Añadir contraseña").grid(
         row=0,
@@ -212,7 +228,7 @@ def main():
         padx=20,
         pady=20,
     )
-
+    sv_ttk.set_theme("dark")
     root.mainloop()
 
 if __name__ == "__main__":
