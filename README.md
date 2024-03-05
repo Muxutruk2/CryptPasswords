@@ -9,7 +9,6 @@ Execute these commands in CMD
 
 ```
 pip install tkinter
-pip install sv_ttk
 pip install Pillow
 ```
 

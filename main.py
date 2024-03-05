@@ -6,7 +6,6 @@ from criptro import *
 import tkinter as tk
 from tkinter import ttk
 import sv_ttk
-from PIL import ImageTk, Image
 
 cipher = generate_key_from_password("1")
 result_label = None
