@@ -5,11 +5,11 @@ try:
     import sv_ttk
     from PIL import ImageTk, Image
 except:
-    import os
-    os.system("pip install criptro")
-    os.system("pip install tkinter")
-    os.system("pip install sv_ttk")
-    os.system("pip install PIL")
+    import subprocess
+    subprocess.call("pip install criptro")
+    subprocess.call("pip install tkinter")
+    subprocess.call("pip install sv_ttk")
+    subprocess.call("pip install Pillow")
 
     from criptro import *
     import tkinter as tk
