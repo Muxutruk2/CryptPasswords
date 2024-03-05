@@ -2,7 +2,7 @@ import sys
 
 sys.dont_write_bytecode = True
 
-from criptro import *
+from crypto import *
 import tkinter as tk
 from tkinter import ttk
 import sv_ttk
@@ -10,34 +10,37 @@ import sv_ttk
 cipher = generate_key_from_password("1")
 result_label = None
 
-def establecerLlave():
+
+def setKey():
     global cipher
     global password_entry_right
-    contraseña = password_entry_right.get()
-    cipher = generate_key_from_password(contraseña)
-    print("Llave establecida: ", contraseña)
+    password = password_entry_right.get()
+    cipher = generate_key_from_password(password)
+    print("Key set: ", password)
 
 
 def refresh_result_label():
     global result_label, cipher
 
-    decrypted_entries = leer(cipher)
+    decrypted_entries = read(cipher)
 
     if not decrypted_entries:
         return None
-    
+
     result_label.config(text=decrypted_entries)
 
     print(decrypted_entries)
 
-def añadirContraseña():
+
+def addPassword():
     global app_entry_left, email_entry_left, result_label, cipher, password_entry_left
     app = app_entry_left.get()
-    correo = email_entry_left.get()
-    contraseña = password_entry_left.get()
-    if "" in [app,correo,contraseña]: return
-    escribir(app, correo, contraseña, cipher)
-    print(app, correo, contraseña, cipher)
+    email = email_entry_left.get()
+    password = password_entry_left.get()
+    if "" in [app, email, password]:
+        return
+    write(app, email, password, cipher)
+    print(app, email, password, cipher)
     refresh_result_label()
 
 
@@ -45,15 +48,20 @@ def main():
     global app_entry_left, email_entry_left, result_label, cipher, password_entry_right, password_entry_left
 
     root = tk.Tk()
-    
-    root.title("Administrador de contraseñas encriptadas")
+
+    root.title("Encrypted Password Manager")
     root.configure(background="#000000")
 
     # Left side widgets
     left_frame = ttk.Frame(root)
-    left_frame.grid(row=0, column=0, padx=100, pady=100, )
+    left_frame.grid(
+        row=0,
+        column=0,
+        padx=100,
+        pady=100,
+    )
 
-    ttk.Label(left_frame, text="Añadir contraseña").grid(
+    ttk.Label(left_frame, text="Add Password").grid(
         row=0,
         column=0,
         columnspan=2,
@@ -61,16 +69,30 @@ def main():
         pady=20,
     )
 
-    password_label_left = ttk.Label(left_frame, text="Contraseña:")
-    password_label_left.grid(row=1, column=0, sticky="E",padx=20,
-        pady=20,)
+    password_label_left = ttk.Label(left_frame, text="Password:")
+    password_label_left.grid(
+        row=1,
+        column=0,
+        sticky="E",
+        padx=20,
+        pady=20,
+    )
     password_entry_left = ttk.Entry(left_frame)
-    password_entry_left.grid(row=1, column=1,padx=20,
-        pady=20,)
+    password_entry_left.grid(
+        row=1,
+        column=1,
+        padx=20,
+        pady=20,
+    )
 
-    app_label_left = ttk.Label(left_frame, text="Aplicacion:")
-    app_label_left.grid(row=2, column=0, sticky="E",padx=20,
-        pady=20,)
+    app_label_left = ttk.Label(left_frame, text="Application:")
+    app_label_left.grid(
+        row=2,
+        column=0,
+        sticky="E",
+        padx=20,
+        pady=20,
+    )
     app_entry_left = ttk.Entry(left_frame)
     app_entry_left.grid(
         row=2,
@@ -79,7 +101,7 @@ def main():
         pady=20,
     )
 
-    email_label_left = ttk.Label(left_frame, text="Correo/Nombre:")
+    email_label_left = ttk.Label(left_frame, text="Email/Username:")
     email_label_left.grid(
         row=3,
         column=0,
@@ -95,7 +117,7 @@ def main():
         pady=20,
     )
 
-    accept_button_left = ttk.Button(left_frame, text="OK",command=añadirContraseña)
+    accept_button_left = ttk.Button(left_frame, text="OK", command=addPassword)
     accept_button_left.grid(
         row=4,
         column=0,
@@ -121,7 +143,7 @@ def main():
         pady=20,
     )
 
-    password_label_right = ttk.Label(right_frame, text="Llave de encriptacion:")
+    password_label_right = ttk.Label(right_frame, text="Encryption Key:")
     password_label_right.grid(
         row=1,
         column=0,
@@ -137,7 +159,7 @@ def main():
         pady=20,
     )
 
-    accept_button_right = ttk.Button(right_frame, text="Establecer llave",command=establecerLlave)
+    accept_button_right = ttk.Button(right_frame, text="Set Key", command=setKey)
     accept_button_right.grid(
         row=2,
         column=0,
@@ -147,7 +169,7 @@ def main():
     )
 
     # Text widget on the right side
-    result_label = tk.Label(right_frame,height=20, width=50)
+    result_label = tk.Label(right_frame, height=20, width=50)
     result_label.grid(
         row=3,
         column=0,
@@ -157,7 +179,9 @@ def main():
     )
     result_label.config(state=tk.DISABLED)
 
-    refresh_button_right = ttk.Button(right_frame, text="Refrescar", command=refresh_result_label)
+    refresh_button_right = ttk.Button(
+        right_frame, text="Refresh", command=refresh_result_label
+    )
     refresh_button_right.grid(
         row=4,
         column=0,
