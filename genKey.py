@@ -1,4 +1,5 @@
 import os
+
 try:
     import base64
     from cryptography.hazmat.primitives import hashes
@@ -8,8 +9,16 @@ try:
 except:
     os.system("pip install cryptography")
 
-def generate_key_from_password(password:str) -> Fernet:
-    """Generates a Fernet key from a password"""
+def generate_key_from_password(password: str) -> Fernet:
+    """
+    Generates a Fernet key from a password.
+
+    Parameters:
+    - password (str): The password used to generate the key.
+
+    Returns:
+    Fernet: The generated Fernet key.
+    """
     # Convert the password to bytes
     password_bytes = password.encode()
 

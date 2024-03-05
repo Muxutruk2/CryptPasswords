@@ -7,18 +7,38 @@ import tkinter as tk
 from tkinter import ttk
 import sv_ttk
 
+# Global variable to store the encryption key
 cipher = generate_key_from_password("1")
+
+# Global variable to store the result label widget
 result_label = None
 
-
 def setKey():
+    """
+    Sets the encryption key based on the password entered in the right side Entry widget.
+
+    Input:
+    - None
+
+    Output:
+    - None
+    """
     global cipher
     global password_entry_right
+    
     password = password_entry_right.get()
     cipher = generate_key_from_password(password)
 
-
 def refresh_result_label():
+    """
+    Refreshes the result label widget with decrypted entries from the storage.
+
+    Input:
+    - None
+
+    Output:
+    - None
+    """
     global result_label, cipher
 
     decrypted_entries = read(cipher)
@@ -28,18 +48,40 @@ def refresh_result_label():
 
     result_label.config(text=decrypted_entries)
 
-
 def addPassword():
+    """
+    Adds a new password entry to the storage and refreshes the result label widget.
+
+    Input:
+    - None
+
+    Output:
+    - None
+    """
     global app_entry_left, email_entry_left, result_label, cipher, password_entry_left
+    
     app = app_entry_left.get()
     email = email_entry_left.get()
     password = password_entry_left.get()
+    
+    # Check if any of the fields are empty
     if "" in [app, email, password]:
         return
+    
     write(app, email, password, cipher)
     refresh_result_label()
 
 def changeLanguage():
+    """
+    Changes the language of the left side labels.
+
+    Input:
+    - None
+
+    Output:
+    - None
+    """
+    
     global add_password_label_left, password_label_left, app_label_left, email_label_left, accept_button_left, language_button_left, password_label_right, accept_button_right, refresh_button_right
     add_password_label_left.configure(text="Añadir contraseña")
     password_label_left.configure(text="Contraseña: ")
