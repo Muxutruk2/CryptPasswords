@@ -1,3 +1,7 @@
+import sys
+
+sys.dont_write_bytecode = True
+
 try:
     from criptro import *
     import tkinter as tk
