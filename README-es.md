@@ -12,6 +12,7 @@ Ejecuta estos comandos en CMD
 ```
 pip install cryptography
 pip install Pillow
+pip install sv_ttk
 ```
 
 Después, ejecuta "main.py". Puedes crear un acceso directo.
