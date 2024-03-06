@@ -24,7 +24,14 @@ def generate_key_from_password(password:str) -> Fernet:
         length=32  # The length of the key
     )
 
-    # Derive the key from the password
-    key = Fernet(base64.urlsafe_b64encode(kdf.derive(password_bytes)))
+    try:
+        # Derive the key from the password
+        key = Fernet(base64.urlsafe_b64encode(kdf.derive(password_bytes)))
+    except Exception as e:
+        print(f"ERROR WHEN GENERATING FERNET KEY FROM str:{password} kdf: {kdf} : ", e)
 
     return key
+
+if __name__ == "__main__":
+    print("Generated key from 123: ", generate_key_from_password("123"))
+# end main
