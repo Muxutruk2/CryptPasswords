@@ -9,21 +9,12 @@ try:
 except:
     os.system("pip install cryptography")
 
-def generate_key_from_password(password: str) -> Fernet:
-    """
-    Generates a Fernet key from a password.
-
-    Parameters:
-    - password (str): The password used to generate the key.
-
-    Returns:
-    Fernet: The generated Fernet key.
-    """
+def generate_key_from_password(password:str) -> Fernet:
     # Convert the password to bytes
     password_bytes = password.encode()
 
     # Generate a salt (random value)
-    salt = b'0972376093247698234najdiajfgjoijqj40934i'
+    salt = b'salt_value_here'
 
     # Create a PBKDF2HMAC key derivation function
     kdf = PBKDF2HMAC(
