@@ -97,13 +97,26 @@ def main():
     global add_password_label_left, password_label_left, app_label_left, email_label_left, accept_button_left, language_button_left, password_label_right, accept_button_right, refresh_button_right
 
     root = tk.Tk()
-
+    root.rowconfigure(0,weight=1)
+    root.columnconfigure(0,weight=1)
+    root.geometry("1000x652")
     root.title("Encrypted Password Manager")
     root.configure(background="#000000")
+    root.resizable(False, False)
+
+    tk.Grid.rowconfigure(root,0,weight=1)
+    tk.Grid.rowconfigure(root,1,weight=1)
+    tk.Grid.rowconfigure(root,2,weight=1)
+    tk.Grid.rowconfigure(root,3,weight=1)
+    tk.Grid.rowconfigure(root,4,weight=1)
+    tk.Grid.rowconfigure(root,5,weight=1)
+    tk.Grid.columnconfigure(root,0,weight=1)
+    tk.Grid.columnconfigure(root,1,weight=1)
 
     # Left side widgets
     left_frame = ttk.Frame(root)
     left_frame.grid(
+        sticky="NSEW",
         row=0,
         column=0,
         padx=100,
@@ -112,6 +125,7 @@ def main():
 
     add_password_label_left = ttk.Label(left_frame, text="Add Password")
     add_password_label_left.grid(
+        sticky="NSEW",
         row=0,
         column=0,
         columnspan=2,
@@ -123,12 +137,13 @@ def main():
     password_label_left.grid(
         row=1,
         column=0,
-        sticky="E",
+        sticky="NSEW",
         padx=20,
         pady=20,
     )
     password_entry_left = ttk.Entry(left_frame)
     password_entry_left.grid(
+        sticky="NSEW",
         row=1,
         column=1,
         padx=20,
@@ -139,12 +154,13 @@ def main():
     app_label_left.grid(
         row=2,
         column=0,
-        sticky="E",
+        sticky="NSEW",
         padx=20,
         pady=20,
     )
     app_entry_left = ttk.Entry(left_frame)
     app_entry_left.grid(
+        sticky="NSEW",
         row=2,
         column=1,
         padx=20,
@@ -153,14 +169,15 @@ def main():
 
     email_label_left = ttk.Label(left_frame, text="Email/Username:")
     email_label_left.grid(
+        sticky="NSEW",
         row=3,
         column=0,
-        sticky="E",
         padx=20,
         pady=20,
     )
     email_entry_left = ttk.Entry(left_frame)
     email_entry_left.grid(
+        sticky="NSEW",
         row=3,
         column=1,
         padx=20,
@@ -169,6 +186,7 @@ def main():
 
     accept_button_left = ttk.Button(left_frame, text="OK", command=addPassword)
     accept_button_left.grid(
+        sticky="NSEW",
         row=4,
         column=0,
         columnspan=2,
@@ -178,6 +196,7 @@ def main():
 
     language_button_left = ttk.Button(left_frame, text="Español", command=changeLanguage)
     language_button_left.grid(
+        sticky="NSEW",
         row=5,
         column=0,
         columnspan=2,
@@ -191,6 +210,7 @@ def main():
         column=1,
         padx=20,
         pady=20,
+        sticky="NSEW",
     )
 
     ttk.Label(right_frame, text="").grid(
@@ -199,18 +219,20 @@ def main():
         columnspan=2,
         padx=20,
         pady=20,
+        sticky="NSEW",
     )
 
     password_label_right = ttk.Label(right_frame, text="Encryption Key:")
     password_label_right.grid(
+        sticky="NSEW",
         row=1,
         column=0,
-        sticky="E",
         padx=20,
         pady=20,
     )
     password_entry_right = ttk.Entry(right_frame)
     password_entry_right.grid(
+        sticky="NSEW",
         row=1,
         column=1,
         padx=20,
@@ -219,6 +241,7 @@ def main():
 
     accept_button_right = ttk.Button(right_frame, text="Set Key", command=setKey)
     accept_button_right.grid(
+        sticky="NSEW",
         row=2,
         column=0,
         columnspan=2,
@@ -227,8 +250,9 @@ def main():
     )
 
     # Text widget on the right side
-    result_label = tk.Label(right_frame, height=20, width=50)
+    result_label = tk.Label(right_frame, height=20)
     result_label.grid(
+        sticky="SE",
         row=3,
         column=0,
         columnspan=2,
@@ -241,6 +265,7 @@ def main():
         right_frame, text="Refresh", command=refresh_result_label
     )
     refresh_button_right.grid(
+        sticky="NSEW",
         row=4,
         column=0,
         columnspan=2,
