@@ -3,7 +3,7 @@ CryptPasswords es una aplicación en Python que guarda contraseñas utilizando c
 
 ## Instalación
 
-Ve a la pestaña "Code" aquí y selecciona "Download Zip". Descomprime el archivo en cualquier ubicación.
+Ve a la pestaña "Versiones" aquí y selecciona "código fuente (zip)". Descomprime el archivo en cualquier ubicación.
 
 Instala Python [aquí](https://www.python.org/downloads/). Marca la casilla "ADD TO PATH" durante la instalación.
 
